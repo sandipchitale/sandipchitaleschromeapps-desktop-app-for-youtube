@@ -1,0 +1,18 @@
+{
+	"name": "Desktop App",
+	"description": "Safe, distractions-free search for YouTube\u2122 videos from your desktop.",
+	"version": "0.1",
+	"app": {
+		"background": {
+			"page": "background.html"
+		}
+	},
+	"sandbox" : {
+		"pages" : ["youtubeviewer.html"]
+	},
+	"icons": {
+		"16": "dapyt16.png",
+		"128": "dapyt128.png"
+	},
+	"manifest_version": 2
+}
