@@ -1,7 +1,7 @@
 {
 	"name": "Desktop App",
 	"description": "Safe, distractions-free search for YouTube\u2122 videos from your desktop.",
-	"version": "0.1",
+	"version": "0.2",
 	"app": {
 		"background": {
 			"page": "background.html"
