@@ -75,6 +75,11 @@ table, td, th {
 	margin: auto 0px;
 }
 
+#youtubeviewer {
+	width: 665px;
+	height: 600px;
+}
+
 #logo-cell {
 	font-family: "Agency FB", "Arial Narrow", sans-serif;
 	font-size: 28px;

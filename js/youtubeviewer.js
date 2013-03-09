@@ -39,6 +39,7 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
     };
     
     $scope.launchVideo = function() {
-        window.open("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded&autoplay=1", "video", "height=360,width=480");
+        window.open("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded&autoplay=1", 
+            "video", "height=360,width=480");
     };
 });

@@ -5,18 +5,19 @@
         <link href="youtubeviewer.css" rel="stylesheet" type="text/css">
         <base target="_blank">
     </head>
-    <body ng-controller="YouTubeViewerController">
+    <body id="youtubeviewer" class="centered" ng-controller="YouTubeViewerController">
         <table class="fill-both centered">
             <tr>
                 <th id="logo-cell" class="top-left-bottom-padded">Desktop App</th>
-                <th class="top-left-bottom-right-padded right-justified-content"><!--  Search Term -->
+                <th class="top-left-bottom-right-padded right-justified-content">
+                <!--  Search Term -->
                 <form ng-submit="search()">
                     <input id="serch-term" class="noFocus" size=40 ng-model="searchTerm" placeholder="Enter search"/>
                 </form></th>
             </tr>
             <tr class="fill-both">
                 <td colspan="2">
-                <table class="fill-both">
+                <table class="fill-both centered">
                     <tr>
                         <td class="top-left-padded"><b>Video Titles</b></td>
                         <td class="top-left-right-padded"><b>Thumbnail</b> (click to play)</td>
