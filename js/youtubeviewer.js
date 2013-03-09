@@ -30,7 +30,7 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
             url : 'https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&callback=JSON_CALLBACK&start-index=1&safeSearch=strict&max-results=50&q=' + searchTerm
         }).success(function(data, status) {
             if (data && data.data && data.data.items) {
-                $.each(data.data.items, function(i, item) {
+                angular.forEach(data.data.items, function(item) {
                     $scope.youTubeVideos.push(new YouTubeVideo(item));
                 });
             }
