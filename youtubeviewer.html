@@ -40,8 +40,12 @@
                         </nobr></td>
                     </tr>
                     <tr>
-                        <td id="description-cell" class="top-left-bottom-right-padded">                        
+                        <td id="description-cell" class="top-left-right-padded">                        
                             <textarea id="description" class="fill-both" rows="5" readonly="true" ng-model="selectedYouTubeVideoArray[0].description"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td id="status-cell" colspan='2' class="top-left-bottom-right-padded fill-both">                        
+                            <nobr id="status-message"><span>{{statusMessage}}</span></nobr></td>
                     </tr>
                     <tr>
                         <td id="footer-cell" class="top-left-bottom-right-padded right-justified-content" colspan="2">

@@ -19,12 +19,16 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
 
     $scope.youTubeVideos = [];
     $scope.selectedYouTubeVideoArray = [emptyYouTubeVideo];
+    
+    $scope.statusMessage = ".";
 
     $scope.search = function() {
         $scope.youTubeVideos = [];
         $scope.selectedYouTubeVideoArray = emptyYouTubeVideo;
 
         var searchTerm = $scope.searchTerm.replace(/\s/g, "+");
+        
+        $scope.statusMessage = "Searching for '" + $scope.searchTerm +"'";
         $http({
             method : "JSONP",
             url : 'https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&callback=JSON_CALLBACK&start-index=1&safeSearch=strict&max-results=50&q=' + searchTerm
@@ -34,7 +38,9 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
                     $scope.youTubeVideos.push(new YouTubeVideo(item));
                 });
             }
+            $scope.statusMessage = "Done searching for '" + $scope.searchTerm + "'";
         }).error(function(data, status) {
+            $scope.statusMessage = "Failed while searching for '" + $scope.searchTerm + "'.";
         });
     };
     
