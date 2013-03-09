@@ -1,55 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="YouTubeViewerApp" ng-csp="">
     <head>
         <title>Desktop App for YouTube&trade;</title>
         <link href="youtubeviewer.css" rel="stylesheet" type="text/css">
         <base target="_blank">
     </head>
-    <body>
+    <body ng-controller="YouTubeViewerController">
         <table class="fill-both centered">
             <tr>
                 <th id="logo-cell" class="top-left-bottom-padded">Desktop App</th>
-                <th class="top-left-bottom-right-padded right-justified-content">
-                    <input id="serch-term" class="noFocus" size=40 data-bind="value: searchTerm, valueUpdate: 'afterkeydown', executeOnEnter: search" placeholder="Enter search"/>
-                </th>
+                <th class="top-left-bottom-right-padded right-justified-content"><!--  Search Term -->
+                <form ng-submit="search()">
+                    <input id="serch-term" class="noFocus" size=40 ng-model="searchTerm" placeholder="Enter search"/>
+                </form></th>
             </tr>
             <tr class="fill-both">
                 <td colspan="2">
-                    <table class="fill-both">
-                        <tr>
-                            <td class="top-left-padded"><b>Video Titles</b></td>
-                            <td class="top-left-right-padded"><b>Thumbnail</b> (click to play)</td>
-                        </tr>
-                        <tr>
-                            <td id="video-titles-cell" class="top-left-bottom-padded fill-vertical" rowspan="3">
-                                <select class="fill-both" multiple
-                                    data-bind="options: youTubeVideos, value: selectedYouTubeVideo, optionsTitle: function(youTubeVideoDescriptor) { return youTubeVideoDescriptor.title();}, optionsText: function(youTubeVideoDescriptor) { return youTubeVideoDescriptor.title().substring(0, 25);}"></select>
-                            </td>
-                            <td id="thumbnail-cell" class="top-left-right-padded">
-                                <a class="fill-both" data-bind="click: launchVideo">
-                                    <img id="thumbnail" data-bind="attr: {src: (selectedYouTubeVideo() ? selectedYouTubeVideo().thumbnail : '' )}" />
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="video-title-cell" class="top-left-right-padded" ><nobr id="video-title"><b>Video Title&nbsp;</b><span data-bind="text: (selectedYouTubeVideo() ? selectedYouTubeVideo().title() : '')"></span></nobr></td>
-                        </tr>
-                        <tr>
-                            <td id="description-cell" class="top-left-bottom-right-padded">
-                                <textarea id="description" class="fill-both" rows="5" readonly="true" data-bind="value: selectedYouTubeVideo() && selectedYouTubeVideo().description"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td id="footer-cell" class="top-left-bottom-right-padded right-justified-content" colspan="2">
-                                <nobr id="attribution">YouTube is a trademark of Google Inc. Use of this trademark is subject to Google Permissions.</nobr>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+                <table class="fill-both">
+                    <tr>
+                        <td class="top-left-padded"><b>Video Titles</b></td>
+                        <td class="top-left-right-padded"><b>Thumbnail</b> (click to play)</td>
+                    </tr>
+                    <tr>
+                        <td id="video-titles-cell" class="top-left-bottom-padded fill-vertical" rowspan="3"><!-- Search Titles-->
+                        <select class="fill-both" multiple ng-model="selectedYouTubeVideoArray" ng-options="youTubeVideo.title for youTubeVideo in youTubeVideos">
+                            <option value=""></option>
+                        </select></td>
+                        <td id="thumbnail-cell" class="top-left-right-padded">
+                            <a class="fill-both" ng-click="launchVideo()">
+                                <img id="thumbnail" ng-src="{{selectedYouTubeVideoArray[0].thumbnail}}"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="video-title-cell" class="top-left-right-padded" >
+                        <nobr id="video-title">
+                            <b>Video Title&nbsp;</b><span>{{selectedYouTubeVideoArray[0].title}}</span>
+                        </nobr></td>
+                    </tr>
+                    <tr>
+                        <td id="description-cell" class="top-left-bottom-right-padded">                        
+                            <textarea id="description" class="fill-both" rows="5" readonly="true" ng-model="selectedYouTubeVideoArray[0].description"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td id="footer-cell" class="top-left-bottom-right-padded right-justified-content" colspan="2">
+                        <nobr id="attribution">
+                            YouTube is a trademark of Google Inc. Use of this trademark is subject to Google Permissions.
+                        </nobr></td>
+                    </tr>
+                </table></td>
             </tr>
         </table>
         <script src="js/jquery-1.9.1.min.js"></script>
-        <script src="js/knockout-2.2.1.js"></script>
+        <script src="js/angular-1.1.0.min.js"></script>
         <script src="js/youtubeviewer.js"></script>
     </body>
 </html>

@@ -1,5 +1,5 @@
 chrome.app.runtime.onLaunched.addListener(function() {
-    chrome.app.window.create('youtubeviewerwrapper.html', {
+    chrome.app.window.create('youtubeviewer.html', {
         'width' : 665,
         'height' : 600,
         'minWidth' : 665,

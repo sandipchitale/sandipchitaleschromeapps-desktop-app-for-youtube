@@ -10,6 +10,11 @@
 	"sandbox" : {
 		"pages" : ["youtubeviewer.html"]
 	},
+	"permissions": [
+		"https://gdata.youtube.com/*",
+    	"http://www.youtube.com/*",
+    	"https://www.youtube.com/*"
+	],
 	"icons": {
 		"16": "dapyt16.png",
 		"128": "dapyt128.png"
