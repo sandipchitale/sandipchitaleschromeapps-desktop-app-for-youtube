@@ -37,4 +37,8 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
         }).error(function(data, status) {
         });
     };
+    
+    $scope.launchVideo = function() {
+        window.open("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded&autoplay=1", "_blank");
+    };
 });
