@@ -1,0 +1,25 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	outline: none;
+}
+
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 10pt;
+	background-image: url('header.png');
+	padding: 10px 0px 0px 0px;
+	-webkit-app-region: drag;
+}
+
+#youtubeviewer {
+	-webkit-app-region: no-drag;
+}
+
+#player {
+	position: absolute;
+	top: 85px;
+	left: 175px;
+	z-index: 100;
+	-webkit-app-region: no-drag;
+}

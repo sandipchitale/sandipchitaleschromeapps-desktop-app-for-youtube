@@ -9,7 +9,7 @@
         <table class="fill-both centered">
             <tr>
                 <th id="logo-cell" class="top-left-bottom-padded">Desktop App</th>
-                <th class="top-left-bottom-right-padded right-justified-content">
+                <th id="search-cell" class="top-left-bottom-right-padded right-justified-content">
                 <!--  Search Term -->
                 <form ng-submit="search()">
                     <input id="serch-term" class="noFocus" size=40 ng-model="searchTerm" placeholder="Search for videos"/>
@@ -24,13 +24,11 @@
                     </tr>
                     <tr>
                         <td id="video-titles-cell" class="top-left-bottom-padded fill-vertical" rowspan="3"><!-- Search Titles-->
-                        <select class="fill-both" multiple ng-model="selectedYouTubeVideoArray" ng-options="youTubeVideo.title for youTubeVideo in youTubeVideos">
+                        <select class="fill-both" multiple ng-model="selectedYouTubeVideoArray" ng-options="youTubeVideo.title for youTubeVideo in youTubeVideos" ng-change="launchVideo()">
                             <option value=""></option>
                         </select></td>
                         <td id="thumbnail-cell" class="top-left-right-padded">
-                            <a class="fill-both" ng-click="launchVideo()">
-                                <img id="thumbnail" ng-src="{{selectedYouTubeVideoArray[0].thumbnail}}"/>
-                            </a>
+                            <div id="thumbnail"/></div>
                         </td>
                     </tr>
                     <tr>

@@ -76,6 +76,7 @@ table, td, th {
 }
 
 #youtubeviewer {
+	margin: 5px 5px;
 	width: 665px;
 	height: 620px;
 }
@@ -91,6 +92,9 @@ table, td, th {
 	background: url('dapyt16.png');
 	background-repeat: no-repeat;
 	background-position: 10px;
+}
+
+#search-cell {
 }
 
 #serch-term {
