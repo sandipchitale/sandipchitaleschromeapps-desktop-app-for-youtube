@@ -19,31 +19,31 @@ table, td, th {
 }
 
 .top-padded {
-	padding-top: 5px;	
+	padding-top: 5px;
 }
 
 .top-left-padded {
-	padding-top: 5px;	
-	padding-left: 10px;	
+	padding-top: 5px;
+	padding-left: 10px;
 }
 
 .top-left-right-padded {
-	padding-top: 5px;	
-	padding-left: 10px;	
-	padding-right: 10px;	
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .top-left-bottom-padded {
-	padding-top: 5px;	
-	padding-left: 10px;	
-	padding-bottom: 5px;	
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
 }
 
 .top-left-bottom-right-padded {
-	padding-top: 5px;	
-	padding-left: 10px;	
-	padding-bottom: 5px;	
-	padding-right: 10px;	
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-right: 10px;
 }
 
 .right-justified-content {

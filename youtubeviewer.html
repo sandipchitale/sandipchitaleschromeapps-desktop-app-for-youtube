@@ -20,12 +20,13 @@
                 <table class="fill-both centered">
                     <tr>
                         <td class="top-left-padded"><b>Video Titles</b></td>
-                        <td class="top-left-right-padded"><b>Thumbnail</b> (click to play)</td>
+                        <td class="top-left-right-padded"><b>Video</b></td>
                     </tr>
                     <tr>
-                        <td id="video-titles-cell" class="top-left-bottom-padded fill-vertical" rowspan="3"><!-- Search Titles-->
-                        <select class="fill-both" multiple ng-model="selectedYouTubeVideoArray" ng-options="youTubeVideo.title for youTubeVideo in youTubeVideos" ng-change="launchVideo()">
-                            <option value=""></option>
+                        <td id="video-titles-cell" class="top-left-bottom-padded fill-vertical" rowspan="3">
+                            <!-- Search Titles-->
+                            <select id="video-titles" class="fill-both" multiple ng-model="selectedYouTubeVideoArray" ng-options="youTubeVideo.title for youTubeVideo in youTubeVideos" ng-change="launchVideo()">
+                                <option value=""></option>
                         </select></td>
                         <td id="thumbnail-cell" class="top-left-right-padded">
                             <div id="thumbnail"/></div>
@@ -38,11 +39,11 @@
                         </nobr></td>
                     </tr>
                     <tr>
-                        <td id="description-cell" class="top-left-right-padded">                        
+                        <td id="description-cell" class="top-left-right-padded">
                             <textarea id="description" class="fill-both" rows="5" readonly="true" ng-model="selectedYouTubeVideoArray[0].description"></textarea></td>
                     </tr>
                     <tr>
-                        <td id="status-cell" colspan='2' class="top-left-bottom-right-padded fill-both">                        
+                        <td id="status-cell" colspan='2' class="top-left-bottom-right-padded fill-both">
                             <nobr id="status-message"><span>{{statusMessage}}</span></nobr></td>
                     </tr>
                     <tr>

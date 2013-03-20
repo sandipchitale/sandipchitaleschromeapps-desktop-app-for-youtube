@@ -28,7 +28,7 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
 
     $scope.youTubeVideos = [];
     $scope.selectedYouTubeVideoArray = [emptyYouTubeVideo];
-    
+
     $scope.statusMessage = ".";
 
     $scope.search = function() {
@@ -36,7 +36,7 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
         $scope.selectedYouTubeVideoArray = emptyYouTubeVideo;
 
         var searchTerm = $scope.searchTerm.replace(/\s/g, "+");
-        
+
         $scope.statusMessage = "Searching for '" + $scope.searchTerm +"'";
         $http({
             method : "JSONP",
@@ -46,15 +46,23 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
                 angular.forEach(data.data.items, function(item) {
                     $scope.youTubeVideos.push(new YouTubeVideo(item));
                 });
+                setTimeout(function() {
+                    var options = document.querySelectorAll("#video-titles option");
+                    if (options) {
+                        for (var i = 0; i < options.length; i++) {
+                            options[i].title = options[i].textContent;
+                        }
+                    }
+                }, 0);
             }
             $scope.statusMessage = "Done searching for '" + $scope.searchTerm + "'";
         }).error(function(data, status) {
             $scope.statusMessage = "Failed while searching for '" + $scope.searchTerm + "'.";
         });
     };
-    
+
     $scope.launchVideo = function() {
-        if (embedder) {
+        if (embedder && $scope.selectedYouTubeVideoArray[0] !== emptyYouTubeVideo) {
             // send a message to embedder to show the video in a webview
             embedder.postMessage("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded", "*");
         }
