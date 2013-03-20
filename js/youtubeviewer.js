@@ -1,6 +1,8 @@
 var embedder;
 onload = function() {
     window.addEventListener('message', function(event) {
+        // Record the embedding app window
+        // We will later send it messages to show videos
         embedder = event.source;
     });
 };
@@ -52,10 +54,9 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
     };
     
     $scope.launchVideo = function() {
-        //window.open("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded&autoplay=1", 
-        //    "video", "height=360,width=480");
         if (embedder) {
-            embedder.postMessage("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded&autoplay=1", "*");
+            // send a message to embedder to show the video in a webview
+            embedder.postMessage("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded", "*");
         }
     };
 });
