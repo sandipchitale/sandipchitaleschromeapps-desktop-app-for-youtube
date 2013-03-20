@@ -6,11 +6,11 @@ function launch() {
     //var youtubeviewerWindow = window.open('youtubeviewer.html', '_blank', 'height=620,width=665,resizable=no');
     chrome.app.window.create('youtubeviewerwrapper.html', {
         'width' : 665,
-        'height' : 630,
+        'height' : 635,
         'minWidth' : 665,
-        'minHeight' : 630,
+        'minHeight' : 635,
         'maxWidth' : 665,
-        'maxHeight' : 630,
+        'maxHeight' : 635,
         'frame' : 'none'
     });
 

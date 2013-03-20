@@ -37,7 +37,7 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
 
         var searchTerm = $scope.searchTerm.replace(/\s/g, "+");
 
-        $scope.statusMessage = "Searching for '" + $scope.searchTerm +"'";
+        $scope.statusMessage = "Searching for '" + $scope.searchTerm + "'";
         $http({
             method : "JSONP",
             url : 'https://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&callback=JSON_CALLBACK&start-index=1&safeSearch=strict&max-results=50&q=' + searchTerm
@@ -62,9 +62,22 @@ angular.module('YouTubeViewerApp', []).controller('YouTubeViewerController', fun
     };
 
     $scope.launchVideo = function() {
+        if ($scope.selectedYouTubeVideoArray[0] !== emptyYouTubeVideo) {
+            // send a message to embedder to show the video in a webview
+            embedder.postMessage({
+                command : "show",
+                url : "http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded"
+            }, "*");
+        }
+    };
+
+    $scope.popout = function() {
         if (embedder && $scope.selectedYouTubeVideoArray[0] !== emptyYouTubeVideo) {
             // send a message to embedder to show the video in a webview
-            embedder.postMessage("http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded", "*");
+            embedder.postMessage({
+                command : "popout",
+                url : "http://www.youtube.com/embed/" + $scope.selectedYouTubeVideoArray[0].id + "?feature=player_embedded&autoplay=1"
+            }, "*");
         }
     };
 });

@@ -4,7 +4,25 @@ onload = function() {
         var player = document.querySelector("#player");
 
         // Have the webview show the video
-        player.src = e.data;
+        if (e.data) {
+            if (e.data.command == "show") {
+                player.src = e.data.url;
+            } else if (e.data.command == "popout") {
+                chrome.app.window.create('popoutwrapper.html', {
+                    'width' : 480,
+                    'height' : 370,
+                    'minWidth' : 480,
+                    'minHeight' : 370,
+                    'maxWidth' : 480,
+                    'maxHeight' : 370,
+                    'frame' : 'none'
+                }, function(popoutWindow) {
+                    setTimeout(function() {
+                        popoutWindow.contentWindow.postMessage(e.data.url, "*");
+                    }, 500);
+                });
+            }
+        }
     }
 
     // listen for requests to launch vidoes

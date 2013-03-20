@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Desktop App for YouTube&trade; Popout Wrapper</title>
+        <style>
+			* {
+				margin: 0px;
+				border: 0px;
+				padding: 0px;
+			}
+			body {
+				background-image: url('header.png');
+				padding: 10px 0px 0px 0px;
+				-webkit-app-region: drag;
+			}
+			webview {
+				-webkit-app-region: no-drag;
+			}
+        </style>
+        <script src="js/popoutwrapper.js"></script>
+    </head>
+    <body style="width: 100%;height:100%;">
+        <webview id="player" src="about:blank" style="width: 480px; height:360px;"></webview>
+    </body>
+</html>

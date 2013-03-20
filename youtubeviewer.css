@@ -135,6 +135,16 @@ table, td, th {
 	overflow: hidden;
 }
 
+#popout {
+	background-color: transparent;
+	border: 1px solid transparent;
+	-webkit-border-radius: 3px;
+}
+
+#popout button {
+	font-size: xx-large;
+}
+
 #description-cell {
 	width: 480px;
 	height: 100px;
