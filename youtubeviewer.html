@@ -1,62 +1,73 @@
 <!DOCTYPE html>
 <html ng-app="YouTubeViewerApp" ng-csp="">
-    <head>
-        <title>Desktop App for YouTube&trade;</title>
-        <link href="youtubeviewer.css" rel="stylesheet" type="text/css">
-        <base target="_blank">
-    </head>
-    <body id="youtubeviewer" class="centered" ng-controller="YouTubeViewerController">
-        <table class="fill-both centered">
-            <tr>
-                <th id="logo-cell" class="top-left-bottom-padded">Desktop App</th>
-                <th class="top-left-bottom-right-padded right-justified-content">
-                <!--  Search Term -->
-                <form ng-submit="search()">
-                    <input id="serch-term" class="noFocus" size=40 ng-model="searchTerm" placeholder="Search for videos"/>
-                </form></th>
-            </tr>
-            <tr class="fill-both">
-                <td colspan="2">
-                <table class="fill-both centered">
-                    <tr>
-                        <td class="top-left-padded"><b>Video Titles</b></td>
-                        <td class="top-left-right-padded"><b>Thumbnail</b> (click to play)</td>
-                    </tr>
-                    <tr>
-                        <td id="video-titles-cell" class="top-left-bottom-padded fill-vertical" rowspan="3"><!-- Search Titles-->
-                        <select class="fill-both" multiple ng-model="selectedYouTubeVideoArray" ng-options="youTubeVideo.title for youTubeVideo in youTubeVideos">
-                            <option value=""></option>
-                        </select></td>
-                        <td id="thumbnail-cell" class="top-left-right-padded">
-                            <a class="fill-both" ng-click="launchVideo()">
-                                <img id="thumbnail" ng-src="{{selectedYouTubeVideoArray[0].thumbnail}}"/>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="video-title-cell" class="top-left-right-padded" >
-                        <nobr id="video-title">
-                            <b>Video Title&nbsp;</b><span>{{selectedYouTubeVideoArray[0].title}}</span>
-                        </nobr></td>
-                    </tr>
-                    <tr>
-                        <td id="description-cell" class="top-left-right-padded">                        
-                            <textarea id="description" class="fill-both" rows="5" readonly="true" ng-model="selectedYouTubeVideoArray[0].description"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td id="status-cell" colspan='2' class="top-left-bottom-right-padded fill-both">                        
-                            <nobr id="status-message"><span>{{statusMessage}}</span></nobr></td>
-                    </tr>
-                    <tr>
-                        <td id="footer-cell" class="top-left-bottom-right-padded right-justified-content" colspan="2">
-                        <nobr id="attribution">
-                            YouTube is a trademark of Google Inc. Use of this trademark is subject to Google Permissions.
-                        </nobr></td>
-                    </tr>
-                </table></td>
-            </tr>
-        </table>
-        <script src="js/angular-1.1.0.min.js"></script>
-        <script src="js/youtubeviewer.js"></script>
-    </body>
+	<head>
+		<title>Desktop App for YouTube&trade;</title>
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/youtubeviewer.css" rel="stylesheet" type="text/css">
+		<base target="_blank">
+		<style>
+			body {
+			}
+			.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+				margin: -45px auto auto auto;
+			}
+
+			#videos-carousel .item {
+				height: 314px;
+			}
+
+			.carousel-control {
+				top: 40%;
+				font-size: 48px;
+			}
+
+		</style>
+	</head>
+	<body id="youtubeviewer" ng-controller="YouTubeViewerController">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<form ng-submit="search()" role="search">
+						<div class="form-group">
+							<div class="input-group">
+								<input id="serch-term" ng-model="searchTerm" type="text" class="form-control" placeholder="Search for videos" />
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-default"><img src="search.png"></img></button>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div id="videos-carousel" ng-show="youTubeVideos.length > 0" class="carousel slide" data-ride="carousel" data-interval="false">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+							<div ng-repeat="youTubeVideo in youTubeVideos" ng-class="{item: true, active: ($index === 0)}" ng-click="popout($index)">
+								<img ng-src="{{youTubeVideo.thumbnail}}" alt="{{youTubeVideo.title}}">
+								<div class="carousel-caption">
+									<h6 class="badge">{{$index+1}} of {{youTubeVideos.length}}</h6>
+									<h4>{{youTubeVideo.title}}</h4>
+									<small>{{youTubeVideo.description}}</small>
+								</div>
+							</div>
+						</div>
+
+						<!-- Controls -->
+						<a class="left  carousel-control" href="#videos-carousel" role="button" data-slide="prev"><img src="prev.png"></img></a>
+						<a class="right carousel-control" href="#videos-carousel" role="button" data-slide="next"><img src="next.png"></img></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/youtubeviewer.js"></script>
+	</body>
 </html>
